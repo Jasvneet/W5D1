@@ -1,6 +1,7 @@
 class MaxIntSet
 
-  attr_reader :store
+  attr_reader :store, :max
+
   def initialize(max)
     @max = max 
     @store = Array.new(@max)
@@ -14,15 +15,15 @@ class MaxIntSet
       else 
         @store[i]= false 
       end 
-
     end 
-
   end
 
   def remove(num)
+    @store.delete_at(num)
   end
 
   def include?(num)
+    @store[num] == true
   end
 
   private
