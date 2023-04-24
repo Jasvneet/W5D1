@@ -29,6 +29,7 @@ class MaxIntSet
   private
 
   def is_valid?(num)
+
   end
 
   def validate!(num)
@@ -36,17 +37,24 @@ class MaxIntSet
 end
 
 class IntSet
+  attr_reader :num_buckets, :store 
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
+    @num_buckets = num_buckets
   end
 
+  
   def insert(num)
+    @store[num % @num_buckets] << num 
   end
 
   def remove(num)
+    @store.delete_at(num % @num_buckets)
   end
 
   def include?(num)
+    @store[num % @num_buckets].include?(num)
+
   end
 
   private
